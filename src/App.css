@@ -1,0 +1,199 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #faf8ef;
+  font-family: Arial, sans-serif;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #776e65;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.score {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #776e65;
+}
+
+.game-over {
+  font-size: 32px;
+  color: red;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.restart-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.restart-btn:hover {
+  background: darkred;
+}
+
+.fill-btn {
+  background: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fill-btn:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+.fill-btn:disabled:hover {
+  background: gray;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #bbada0;
+  background: #bbada0;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.cell-0 {
+  background: #cdc1b4;
+}
+
+.cell-2 {
+  background: #eee4da;
+  color: #776e65;
+}
+
+.cell-4 {
+  background: #ede0c8;
+  color: #776e65;
+}
+
+.cell-8 {
+  background: #f2b179;
+  color: #f9f6f2;
+}
+
+.cell-16 {
+  background: #f59563;
+  color: #f9f6f2;
+}
+
+.cell-32 {
+  background: #f67c5f;
+  color: #f9f6f2;
+}
+
+.cell-64 {
+  background: #f65e3b;
+  color: #f9f6f2;
+}
+
+.cell-128 {
+  background: #edcf72;
+  color: #f9f6f2;
+  font-size: 20px;
+}
+
+.cell-256 {
+  background: #edcc61;
+  color: #f9f6f2;
+  font-size: 20px;
+}
+
+.cell-512 {
+  background: #edc850;
+  color: #f9f6f2;
+  font-size: 20px;
+}
+
+.cell-1024 {
+  background: #edc53f;
+  color: #f9f6f2;
+  font-size: 18px;
+}
+
+.cell-1500 {
+  background: #edc22e;
+  color: #f9f6f2;
+  font-size: 16px;
+}
+
+.instructions {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #776e65;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .game {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+  }
+
+  .cell-128,
+  .cell-256,
+  .cell-512 {
+    font-size: 18px;
+  }
+
+  .cell-1024,
+  .cell-1500 {
+    font-size: 16px;
+  }
+}
