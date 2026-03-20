@@ -14,6 +14,9 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  width: min(100%, 420px);
+  box-sizing: border-box;
+  touch-action: none;
 }
 
 h1 {
@@ -173,7 +176,7 @@ h1 {
 
 @media (max-width: 600px) {
   .game {
-    padding: 20px;
+    padding: 16px;
   }
 
   h1 {
@@ -181,9 +184,21 @@ h1 {
   }
 
   .cell {
-    width: 80px;
-    height: 80px;
-    font-size: 20px;
+    width: 70px;
+    height: 70px;
+    font-size: 18px;
+  }
+
+  .buttons {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .restart-btn,
+  .fill-btn {
+    flex: 1 1 120px;
+    padding: 10px;
+    font-size: 16px;
   }
 
   .cell-128,

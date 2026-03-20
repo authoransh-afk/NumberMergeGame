@@ -102,6 +102,7 @@ function App() {
   const [grid, setGrid] = useState<Grid>(initialGrid)
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(false)
+  const [touchStart, setTouchStart] = useState<{x: number, y: number} | null>(null)
 
   const handleMove = useCallback((direction: string) => {
     if (gameOver) return
@@ -159,13 +160,37 @@ function App() {
     }
   }
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0]
+    setTouchStart({ x: touch.clientX, y: touch.clientY })
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return
+    const touch = e.changedTouches[0]
+    const deltaX = touch.clientX - touchStart.x
+    const deltaY = touch.clientY - touchStart.y
+    const threshold = 30
+    if (Math.abs(deltaX) < threshold && Math.abs(deltaY) < threshold) return
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX > 0) handleMove('right')
+      else handleMove('left')
+    } else {
+      if (deltaY > 0) handleMove('down')
+      else handleMove('up')
+    }
+
+    setTouchStart(null)
+  }
+
   useEffect(() => {
     const gameDiv = document.querySelector('.game') as HTMLElement
     if (gameDiv) gameDiv.focus()
   }, [])
 
   return (
-    <div className="game" onKeyDown={handleKeyDown} tabIndex={0}>
+    <div className="game" onKeyDown={handleKeyDown} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} tabIndex={0}>
       <h1>Merge Number Game</h1>
       <div className="score">Score: {score}</div>
       {gameOver && <div className="game-over">Game Over!</div>}
@@ -185,7 +210,7 @@ function App() {
         <button className="fill-btn" onClick={fillRandomly} disabled={gameOver}>Fill Randomly</button>
       </div>
       <div className="instructions">
-        Use arrow keys to move. Merge numbers up to 1500.
+        Use arrow keys or swipe on mobile to move. Merge numbers up to 1500.
       </div>
     </div>
   )
