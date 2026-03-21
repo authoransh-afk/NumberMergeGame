@@ -393,7 +393,7 @@ function App() {
         <button className="fill-btn" onClick={fillRandomly} disabled={gameOver}>Fill Randomly</button>
       </div>
       <div className="instructions">
-        Use arrow keys or swipe on mobile to move. Merge numbers up to 1500 with spawn values 1-10.
+        Use arrow keys or swipe on mobile to move. Merge numbers up to 1500 with spawn values in multiples of 2.
       </div>
     </div>
   )
